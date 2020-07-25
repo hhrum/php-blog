@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Kelly Slab', cursive;
+    font-family: 'Kelly Slab';
 }
 
 body {
@@ -57,24 +57,31 @@ body {
 
 .articles {
     background-color: #fff;
-    padding: 30px;
-    
+    padding: 30px 30px 0 30px;
     flex-grow: 1;
 }
 
-.welcome {
+.title {
     color: #e74c3c;
     font-size: 26pt;
     font-weight: bold;
 }
 
-.welcome__seperator {
+.title__seperator {
     background-color: #ecf0f1;
     height: 10px;
 }
 
-.welcome__text {
+.title__text {
     margin: 10px 0;
+}
+
+.title__seperator_categories {
+    background-color: #7f8c8d;
+}
+
+.title__text_categories {
+    color: #fff;
 }
 
 .post {
@@ -111,16 +118,35 @@ body {
     flex-grow: 1;
 }
 
-.post__title {
+.post__title>a {
+    text-decoration: none;
+    color: #95a5a6;
     font-size: 26pt;
     font-weight: bold;
 }
 
 .post__content {
     color: #333;
+    font-size: 12pt;
+}
+
+.post__seperator {
+    background-color: #ecf0f1;
+    height: 2px;
+    margin: 30px 0;
 }
 
 .topics {
     background-color: #95a5a6;
-    flex-basis: 300px;
+    flex-basis: 30%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.categories {
+    padding: 30px 0;
+    list-style: none;
+    color: #fff;
+    font-size: 12pt;
+    font-weight: 400;
 }

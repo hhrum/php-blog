@@ -19,7 +19,6 @@ class View {
         extract($vars);
         
         if (file_exists($this->path)) {
-            
             ob_start();
             require $this->path;
             $content = ob_get_clean();

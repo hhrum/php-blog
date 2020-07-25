@@ -3,18 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://blog.local/public/style/style.css">
     <title><?= $title ?></title>
 </head>
 <body>
-    <h1>Добро пожаловать на тестовый блог</h1>
+    <div class="header main-block">
+        <div class="header__logo">
+            <p>Тупа блог</p>
+        </div>
+        <ul class="navbar">
+            <li class="navbar__item navbar__item_selected">Главная</li>
+            <li class="navbar__item">IT</li>
+            <li class="navbar__item">Философия</li>
+            <li class="navbar__item">Образ жизни</li>
+        </ul>   
+    </div>
 
-    <hr>
-    <ul>
-        <li> <a href="http://blog.local">Главная страница</a> </li>
-        <li> <a href="http://blog.local/main/about">Обо мне</a> </li>
-    </ul>
-    <hr>
+    <div class="content main-block">
+        
+        <?= $content ?>
 
-    <?= $content ?>
+        <div class="topics">
+            <div class="title">
+                <div class="title__seperator title__seperator_categories"></div>
+                <div class="title__text title__text_categories">Категории</div>
+                <div class="title__seperator title__seperator_categories"></div>
+                <ul class="categories">
+                    <li class="category">IT</li>
+                    <li class="category">Философия</li>
+                    <li class="category">Образ жизни</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

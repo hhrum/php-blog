@@ -29,6 +29,8 @@ class AdminModel extends Model {
     }
 
     public function addPost($title, $content) {
+        $content = preg_replace("/\r\n|\r|\n/", '<br>', $content);;
+
         $post = [
             "title" => $title,
             "content" => $content,
