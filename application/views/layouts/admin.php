@@ -12,6 +12,7 @@
     <ul>
         <li> <a href="http://blog.local/admin">Список постов</a> </li>
         <li> <a href="http://blog.local/admin/add_panel">Создать</a> </li>
+        <li> <a href="http://blog.local/admin/logout">Выйти</a> </li>
     </ul>
     <hr>
 

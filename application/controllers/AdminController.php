@@ -13,6 +13,7 @@ class AdminController extends Controller {
         $this->view->layout = "admin";
     }
 
+    // Стартовая страница
     public function IndexAction() {
         $this->checkAuth();
 
@@ -23,6 +24,7 @@ class AdminController extends Controller {
         $this->view->render("Панель администратора", $vars);
     }
 
+    // Страница поста
     public function PostAction() {
         $this->checkAuth();
 
@@ -34,6 +36,7 @@ class AdminController extends Controller {
         $this->view->render($vars['post']['title'], $vars);
     }
 
+    // Страница добавления поста
     public function Add_panelAction() {
         $this->checkAuth();
 
@@ -55,6 +58,7 @@ class AdminController extends Controller {
         $this->view->redirect("http://blog.local/admin/post/$id");
     }
 
+    // Страница изменения поста
     public function Edit_panelAction() {
         $this->checkAuth();
 
@@ -82,6 +86,7 @@ class AdminController extends Controller {
         $this->view->redirect("http://blog.local/admin/post/$id");
     }
 
+    // Страница удаления поста
     public function Delete_panelAction() {
         $this->checkAuth();
 
@@ -106,10 +111,25 @@ class AdminController extends Controller {
         $this->view->redirect("http://blog.local/admin/");
     }
 
+    // Страница авторизации
+    public function LoginAction() {
+        if (!empty($_POST) && isset($_POST['login']) && isset($_POST['password'])) 
+            $this->model->signin($_POST['login'], $_POST['password']);
+        
+        if ($this->model->checkAuth()) $this->view->redirect("http://blog.local/admin");
+
+        $this->view->render("Страница авторизации");
+    }
+
+    public function LogoutAction() {
+        $this->model->signout();
+        $this->checkAuth();
+    }
+
     // Shorted
     protected function checkAuth() {
         if (!$this->model->checkAuth())
-            Router::ErrorPage(404);
+            $this->view->redirect("http://blog.local/admin/login");
     }
 
     protected function checkParameter() {

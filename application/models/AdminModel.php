@@ -9,8 +9,44 @@ class AdminModel extends Model {
 
     // Auth
 
+    public function signup($login, $password) {
+
+        if ( $this->db->findOne("user", "login", $login) ) Router::ErrorPage(404);
+
+        $rows = [
+            "login" => $login,
+            "password" => password_hash($password, PASSWORD_DEFAULT)
+        ];
+
+        $id = $this->db->insert("user", $rows);
+        
+        if ($id) return $id;
+        Router::ErrorPage(404);
+    }
+
+    public function signin($login, $password) {
+        $user = $this->db->findOne("user", "login", $login)->export();
+        if (!$user || !password_verify($password, $user['password'])) return;
+        $auth_check = password_hash(random_bytes(5), PASSWORD_DEFAULT);
+
+        $user['auth_check'] = $auth_check;
+        $this->db->update("user", $user['id'], $user);
+        $_SESSION['auth_id'] = $user['id'];
+        $_SESSION['auth_check'] = $auth_check;
+    }
+
+    public function signout() {
+        unset($_SESSION['auth_check']);
+        unset($_SESSION['auth_id']);
+    }
+
     public function checkAuth() {
-        return true;
+        if (isset($_SESSION['auth_check']) && isset($_SESSION['auth_id'])) {
+            $user = $this->db->findOne("user", "id", $_SESSION['auth_id']);
+            if($user) 
+                return $user['auth_check'] == $_SESSION['auth_check'];
+        } 
+        return false;
     }
 
     // Post
