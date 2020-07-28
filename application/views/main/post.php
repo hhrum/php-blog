@@ -1,8 +1,6 @@
 <div class="articles">
     <div class="title">
-        <div class="title__seperator"></div>
         <div class="title__text"><?= $post['title'] ?></div>
-        <div class="title__seperator"></div>
     </div>
     <div class="post">
         <div class="post__date">

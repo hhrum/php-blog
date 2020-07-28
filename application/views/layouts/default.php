@@ -24,16 +24,14 @@
         <?= $content ?>
 
         <div class="topics">
-            <div class="title">
-                <div class="title__seperator title__seperator_categories"></div>
-                <div class="title__text title__text_categories">Категории</div>
-                <div class="title__seperator title__seperator_categories"></div>
-                <ul class="categories">
-                    <li class="category">IT</li>
-                    <li class="category">Философия</li>
-                    <li class="category">Образ жизни</li>
-                </ul>
+            <div class="title title_nav">
+                <div class="title__text">Категории</div>
             </div>
+            <ul class="categories">
+                <li class="category">IT</li>
+                <li class="category">Философия</li>
+                <li class="category">Образ жизни</li>
+            </ul>
         </div>
     </div>
 </body>

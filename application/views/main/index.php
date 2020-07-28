@@ -1,9 +1,7 @@
 
 <div class="articles">
     <div class="title">
-        <div class="title__seperator"></div>
         <div class="title__text">Welcome</div>
-        <div class="title__seperator"></div>
     </div>
 
 <?php foreach ($posts as $post): ?>    
